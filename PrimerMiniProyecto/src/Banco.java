@@ -72,7 +72,7 @@ public class Banco {
             System.out.println("6. Salir");
             System.out.print("Ingrese su opción: ");
             opcion = scanner.nextInt();
-            scanner.nextLine(); // Limpiar el buffer del teclado
+            scanner.nextLine(); 
 
             switch (opcion) {
                 case 1:
