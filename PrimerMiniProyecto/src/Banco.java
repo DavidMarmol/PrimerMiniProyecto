@@ -53,8 +53,29 @@ public class Banco {
         }
     }
 
+    public void pedirPrestamo(String nombre, int cantidadPrestamo) {
+        for (Cliente cliente : clientes) {
+            if (cliente.getNombre().equals(nombre)) {
+                int ahorroDisponible = cliente.getAhorro();
 
-   
+                if (cantidadPrestamo <= ahorroDisponible) {
+                    cliente.setAhorro(ahorroDisponible - cantidadPrestamo);
+                    System.out.println("Préstamo concedido. Nuevo saldo: " + cliente.getAhorro());
+                } else if (cantidadPrestamo <= ahorroDisponible * 2) {
+                    int cuotas = 6;
+                    double interesAnual = 0.02;
+                    double interesMensual = Math.pow(1 + interesAnual, 1.0 / 12) - 1;
+                    double cuotaMensual = cantidadPrestamo * (interesMensual / (1 - Math.pow(1 + interesMensual, -cuotas)));
+                    System.out.println("Préstamo concedido en " + cuotas + " cuotas mensuales.");
+                    System.out.println("El valor de cada cuota mensual es: " + cuotaMensual);
+                } else {
+                    System.out.println("No se puede prestar más del doble del ahorro disponible.");
+                }
+                return;
+            }
+        }
+        System.out.println("Cliente no encontrado.");
+    }
 
     public static void main(String[] args) {
         Banco banco = new Banco();
@@ -69,7 +90,8 @@ public class Banco {
             System.out.println("3. Eliminar cliente");
             System.out.println("4. Buscar cliente");
             System.out.println("5. Listar clientes");
-            System.out.println("6. Salir");
+            System.out.println("6. Pedir préstamo");
+            System.out.println("7. Salir");
             System.out.print("Ingrese su opción: ");
             opcion = scanner.nextInt();
             scanner.nextLine(); // Limpiar el buffer del teclado
@@ -90,7 +112,6 @@ public class Banco {
 
                     System.out.print("Ingrese el nivel de ingresos del cliente: ");
                     int nivel_ingresos = scanner.nextInt();
-
 
                     banco.insertarCliente(nombre, ahorro, cedula, nivel_ingresos, fecha_creacion);
                     break;
@@ -117,12 +138,20 @@ public class Banco {
                     banco.listarClientes();
                     break;
                 case 6:
+                    System.out.print("Ingrese el nombre del cliente: ");
+                    nombre = scanner.nextLine();
+                    System.out.print("Ingrese la cantidad que desea pedir prestada: ");
+                    int cantidadPrestamo = scanner.nextInt();
+                    scanner.nextLine(); // Limpiar el buffer del teclado
+                    banco.pedirPrestamo(nombre, cantidadPrestamo);
+                    break;
+                case 7:
                     System.out.println("Saliendo del programa...");
                     break;
                 default:
                     System.out.println("Opción inválida. Por favor, seleccione una opción válida.");
             }
-        } while (opcion != 6);
+        } while (opcion != 7);
 
         scanner.close();
     }
