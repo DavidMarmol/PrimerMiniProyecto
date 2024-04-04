@@ -91,7 +91,8 @@ public class Banco {
             System.out.println("4. Buscar cliente");
             System.out.println("5. Listar clientes");
             System.out.println("6. Pedir préstamo");
-            System.out.println("7. Salir");
+            System.out.println("7. Pedir CDT");
+            System.out.println("8. Salir");
             System.out.print("Ingrese su opción: ");
             opcion = scanner.nextInt();
             scanner.nextLine(); // Limpiar el buffer del teclado
@@ -146,12 +147,57 @@ public class Banco {
                     banco.pedirPrestamo(nombre, cantidadPrestamo);
                     break;
                 case 7:
+                    @SuppressWarnings("unused")
+                    class CDT {
+
+                    
+                        public void main(String[] args) {
+                            Scanner scanner = new Scanner(System.in);
+                            
+                            // Pedir al usuario la cantidad de dinero que tiene ahorrada
+                            System.out.println("Ingrese la cantidad de dinero que tiene ahorrada: ");
+                            float ahorros = scanner.nextFloat();
+                
+                            // Pedir al usuario la cantidad que desea depositar en el CDT
+                            System.out.println("Ingrese la cantidad de dinero que desea depositar en el CDT: ");
+                            float depositoCDT = scanner.nextFloat();
+                
+                            // Pedir al usuario el plazo del CDT (3 o 6 meses)
+                            System.out.println("Ingrese el plazo del CDT (3 o 6 meses): ");
+                            byte plazoCDT = scanner.nextByte();
+                
+                            // Validar el plazo del CDT
+                            if (plazoCDT != 3 && plazoCDT != 6) {
+                            System.out.println("Plazo del CDT no válido.");
+                            return;
+                        }
+                
+                            // Calcular el interés del CDT
+                            float interesCDT;
+                            if (plazoCDT == 3) {
+                            interesCDT = depositoCDT * 0.03f;
+                        } else {
+                            interesCDT = depositoCDT * 0.05f;
+                        }
+                        
+                
+                            // Calcular el total ganado
+                            float totalGanado = depositoCDT + interesCDT;
+                
+                            // Mostrar al usuario el total que ganará en el CDT
+                            System.out.println("El total que ganará en el CDT es: " + totalGanado);
+                    }
+                }
+                    break;
+            
+        
+                case 8:
                     System.out.println("Saliendo del programa...");
                     break;
                 default:
                     System.out.println("Opción inválida. Por favor, seleccione una opción válida.");
             }
-        } while (opcion != 7);
+        } while (opcion != 8);
 
         scanner.close();
     }
