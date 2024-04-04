@@ -3,7 +3,7 @@ Primer MiniProyecto del curso divido en dos partes, un CRUD y opciones de gestio
 monetarias.
 
 Miembros del grupo: 
-- Juan Jose Millan Hernandez
+- Juan Jose Millan Hernandez 2266393
 - Andres Felipe Chaparro Pulgarin 2266252
 - Jose David Marmol Otero 2266370
 
@@ -15,6 +15,7 @@ CRUD: Se crea un menú para gestionar clientes y su informacion, con las opcione
 - Buscar cliente: Se busca el cliente con su nombre.
 - Listar clientes: Se listan la cantidad de clientes registrados.
 - Pedir prestamo: Se solicita un prestamo y se realiza segun sus ahorros.
+- CDT: Solicitar CDT.
 - Salir: Se sale del menú.
 
 Préstamos:
