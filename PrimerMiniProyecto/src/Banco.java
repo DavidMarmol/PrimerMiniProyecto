@@ -77,6 +77,7 @@ public class Banco {
         System.out.println("Cliente no encontrado.");
     }
 
+
     public static void main(String[] args) {
         Banco banco = new Banco();
         Scanner scanner = new Scanner(System.in);
@@ -147,50 +148,10 @@ public class Banco {
                     banco.pedirPrestamo(nombre, cantidadPrestamo);
                     break;
                 case 7:
-                    @SuppressWarnings("unused")
-                    class CDT {
-
-                    
-                        public void main(String[] args) {
-                            Scanner scanner = new Scanner(System.in);
-                            
-                            // Pedir al usuario la cantidad de dinero que tiene ahorrada
-                            System.out.println("Ingrese la cantidad de dinero que tiene ahorrada: ");
-                            float ahorros = scanner.nextFloat();
-                
-                            // Pedir al usuario la cantidad que desea depositar en el CDT
-                            System.out.println("Ingrese la cantidad de dinero que desea depositar en el CDT: ");
-                            float depositoCDT = scanner.nextFloat();
-                
-                            // Pedir al usuario el plazo del CDT (3 o 6 meses)
-                            System.out.println("Ingrese el plazo del CDT (3 o 6 meses): ");
-                            byte plazoCDT = scanner.nextByte();
-                
-                            // Validar el plazo del CDT
-                            if (plazoCDT != 3 && plazoCDT != 6) {
-                            System.out.println("Plazo del CDT no válido.");
-                            return;
-                        }
-                
-                            // Calcular el interés del CDT
-                            float interesCDT;
-                            if (plazoCDT == 3) {
-                            interesCDT = depositoCDT * 0.03f;
-                        } else {
-                            interesCDT = depositoCDT * 0.05f;
-                        }
-                        
-                
-                            // Calcular el total ganado
-                            float totalGanado = depositoCDT + interesCDT;
-                
-                            // Mostrar al usuario el total que ganará en el CDT
-                            System.out.println("El total que ganará en el CDT es: " + totalGanado);
-                    }
-                }
-                    break;
-            
-        
+                CDT cdt = new CDT();
+                cdt.main(args);
+                break;
+           
                 case 8:
                     System.out.println("Saliendo del programa...");
                     break;
@@ -201,4 +162,43 @@ public class Banco {
 
         scanner.close();
     }
+
+public static class CDT {
+
+    @SuppressWarnings("unused")
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+    
+        // Pedir al usuario la cantidad de dinero que tiene ahorrada
+        System.out.println("Ingrese la cantidad de dinero que tiene ahorrada: ");
+        float ahorros = scanner.nextFloat();
+    
+        // Pedir al usuario la cantidad que desea depositar en el CDT
+        System.out.println("Ingrese la cantidad de dinero que desea depositar en el CDT: ");
+        float depositoCDT = scanner.nextFloat();
+                    // Pedir al usuario el plazo del CDT (3 o 6 meses)
+        System.out.println("Ingrese el plazo del CDT (3 o 6 meses): ");
+        byte plazoCDT = scanner.nextByte();
+
+        // Validar el plazo del CDT
+        if (plazoCDT != 3 && plazoCDT != 6) {
+            System.out.println("Plazo del CDT no válido.");
+        }
+
+        // Calcular el interés del CDT
+        float interesCDT;
+        if (plazoCDT == 3) {
+            interesCDT = depositoCDT * 0.03f;
+        } else {
+            interesCDT = depositoCDT * 0.05f;
+        }
+
+        // Calcular el total ganado
+        float totalGanado = depositoCDT + interesCDT;
+
+        // Mostrar al usuario el total que ganará en el CDT
+        System.out.println("El total que ganaría en el CDT es: " + totalGanado);
+        }
+    }
 }
+       
