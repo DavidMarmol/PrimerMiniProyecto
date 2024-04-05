@@ -77,7 +77,7 @@ public class Banco {
         System.out.println("Cliente no encontrado.");
     }
 
-    @SuppressWarnings("static-access")
+
     public static void main(String[] args) {
         Banco banco = new Banco();
         Scanner scanner = new Scanner(System.in);
@@ -151,7 +151,7 @@ public class Banco {
                 CDT cdt = new CDT();
                 cdt.main(args);
                 break;
-            
+           
                 case 8:
                     System.out.println("Saliendo del programa...");
                     break;
@@ -162,6 +162,7 @@ public class Banco {
 
         scanner.close();
     }
+
 public static class CDT {
 
     @SuppressWarnings("unused")
@@ -200,5 +201,4 @@ public static class CDT {
         }
     }
 }
-        
-
+       
